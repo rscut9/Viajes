@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from "react-simple-maps";
-import { geoCentroid } from "d3-geo";
+import { geoCentroid, geoArea } from "d3-geo";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { db } from "./firebase"; 
 
@@ -31,8 +31,11 @@ export default function MapChart() {
 
   const handleCountryClick = (geo) => {
     const centroid = geoCentroid(geo);
+    const area = geoArea(geo);
+    const calculatedZoom = Math.max(2, Math.min(30, 0.8 / Math.sqrt(area)));
+
     setSelectedCountry(geo);
-    setPosition({ coordinates: centroid, zoom: 4 });
+    setPosition({ coordinates: centroid, zoom: calculatedZoom });
     cargarPuntos(geo.rsmKey);
     setPanelAbierto(true);
   };
