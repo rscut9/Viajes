@@ -1,6 +1,6 @@
 import { geoContains } from "d3-geo";
 
-export const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
+export const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-50m.json";
 
 export const continentesMap = {
   Europa: [
