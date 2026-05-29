@@ -1,4 +1,3 @@
-// src/MapChart.jsx
 import React, { useState, useEffect, useMemo } from "react";
 import {
   ComposableMap,
@@ -130,13 +129,10 @@ export default function MapChart() {
       obtenerNombrePaisDesdeGeo(geoPais)
     );
 
-    if (
-      nombrePaisPunto &&
-      nombrePaisGeo &&
-      normalizarTexto(nombrePaisPunto) === normalizarTexto(nombrePaisGeo)
-    ) {
-      return true;
+    if (nombrePaisPunto && nombrePaisPunto !== "Desconocido") {
+      return normalizarTexto(nombrePaisPunto) === normalizarTexto(nombrePaisGeo);
     }
+
     if (Array.isArray(punto.coordenadas) && punto.coordenadas.length === 2) {
       try {
         return geoContains(geoPais, punto.coordenadas);
@@ -315,11 +311,11 @@ export default function MapChart() {
       const nombrePaisGeo = obtenerNombrePaisCanonico(
         obtenerNombrePaisDesdeGeo(geo)
       );
-      if (
-        normalizarTexto(nombrePaisPunto) === normalizarTexto(nombrePaisGeo)
-      ) {
-        return true;
+
+      if (nombrePaisPunto && nombrePaisPunto !== "Desconocido") {
+        return normalizarTexto(nombrePaisPunto) === normalizarTexto(nombrePaisGeo);
       }
+
       if (Array.isArray(punto.coordenadas) && punto.coordenadas.length === 2) {
         try {
           return geoContains(geo, punto.coordenadas);
