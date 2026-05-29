@@ -13,6 +13,7 @@ import {
   addDoc,
   doc,
   updateDoc,
+  deleteDoc,
   query,
   onSnapshot
 } from "firebase/firestore";
@@ -216,6 +217,19 @@ export default function MapChart() {
 
     setPuntoEnEdicion(punto);
     setMostrarFormulario(true);
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm("¿Estás seguro de que quieres borrar este punto de interés?")) {
+      try {
+        await deleteDoc(doc(db, "puntos_interes", id));
+        if (puntoEnEdicion && puntoEnEdicion.id === id) {
+          resetearFormulario();
+        }
+      } catch (error) {
+        console.error("Error al eliminar el documento: ", error);
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -821,16 +835,27 @@ export default function MapChart() {
                             borderRadius: "5px", transition: "background-color 0.5s", position: "relative"
                           }}
                         >
-                          <h4 style={{ margin: "0 0 5px 0" }}>{punto.nombre}</h4>
-                          <button
-                            onClick={() => iniciarEdicion(punto)}
-                            style={{
-                              position: "absolute", top: "15px", right: "15px", padding: "5px 10px",
-                              backgroundColor: "#FFC107", border: "none", borderRadius: "3px", cursor: "pointer"
-                            }}
-                          >
-                            Editar
-                          </button>
+                          <h4 style={{ margin: "0 110px 5px 0" }}>{punto.nombre}</h4>
+                          <div style={{ position: "absolute", top: "15px", right: "15px", display: "flex", gap: "5px" }}>
+                            <button
+                              onClick={() => iniciarEdicion(punto)}
+                              style={{
+                                padding: "5px 10px", backgroundColor: "#FFC107",
+                                border: "none", borderRadius: "3px", cursor: "pointer"
+                              }}
+                            >
+                              Editar
+                            </button>
+                            <button
+                              onClick={() => handleDelete(punto.id)}
+                              style={{
+                                padding: "5px 10px", backgroundColor: "#FF4444",
+                                color: "white", border: "none", borderRadius: "3px", cursor: "pointer"
+                              }}
+                            >
+                              Borrar
+                            </button>
+                          </div>
                           <p style={{ margin: "0 0 5px 0", fontSize: "14px", color: "#666" }}>{punto.direccion}</p>
                           <span style={{ fontSize: "12px", fontWeight: "bold", color: obtenerColorPorTipo(punto.tipo), display: "block", marginBottom: "10px" }}>
                             Tipo: {tipoFormateado}
