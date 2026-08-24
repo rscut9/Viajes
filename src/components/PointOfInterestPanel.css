@@ -1,0 +1,2357 @@
+/* =========================================
+   SECCIÓN
+   ========================================= */
+
+.poi-section {
+  margin-top: 34px;
+
+  padding-top: 28px;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  color: white;
+}
+
+
+/* =========================================
+   CABECERA
+   ========================================= */
+
+.poi-heading {
+  display: flex;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
+  gap: 20px;
+
+  margin-bottom: 17px;
+}
+
+
+.poi-heading > div {
+  min-width: 0;
+}
+
+
+.poi-kicker {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.28
+    );
+
+  font-size: 8px;
+
+  font-weight: 850;
+
+  letter-spacing:
+    0.18em;
+}
+
+
+.poi-heading h2 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 19px;
+
+  font-weight: 720;
+
+  line-height: 1.15;
+
+  letter-spacing:
+    -0.03em;
+}
+
+
+.poi-heading p {
+  margin: 5px 0 0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.37
+    );
+
+  font-size: 10px;
+}
+
+
+.poi-count {
+  display: flex;
+
+  flex: 0 0 auto;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 30px;
+
+  height: 30px;
+
+  padding:
+    0 9px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.55
+    );
+
+  font-size: 9px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================
+   BOTÓN AÑADIR
+   ========================================= */
+
+.poi-add-button {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  width: 100%;
+
+  min-height: 49px;
+
+  padding:
+    0 15px;
+
+  border:
+    1px dashed
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+
+  border-radius:
+    13px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.03
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  font-size: 11px;
+
+  font-weight: 720;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+
+.poi-add-button:hover {
+  transform:
+    translateY(-1px);
+
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.3
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    );
+
+  color: white;
+}
+
+
+.poi-add-icon {
+  font-size: 18px;
+
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* =========================================
+   FORMULARIO
+   ========================================= */
+
+.poi-form {
+  margin-top: 4px;
+
+  padding: 17px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.095
+    );
+
+  border-radius:
+    16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.055
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        0.025
+      )
+    );
+
+  box-shadow:
+    inset
+    0 1px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+}
+
+
+.poi-form-header {
+  display: flex;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
+  gap: 15px;
+
+  margin-bottom: 19px;
+}
+
+
+.poi-form-header > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.poi-form-header > div > span {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.28
+    );
+
+  font-size: 8px;
+
+  font-weight: 850;
+
+  letter-spacing:
+    0.17em;
+}
+
+
+.poi-form-header h3 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: 720;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.poi-close-button {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 31px;
+
+  height: 31px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.55
+    );
+
+  font-size: 19px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+
+.poi-close-button:hover {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  color: white;
+}
+
+
+/* =========================================
+   CAMPOS
+   ========================================= */
+
+.poi-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-top: 14px;
+}
+
+
+.poi-field > span,
+.poi-upload-title {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.48
+    );
+
+  font-size: 9px;
+
+  font-weight: 750;
+
+  letter-spacing:
+    0.02em;
+}
+
+
+.poi-field input,
+.poi-field textarea {
+  width: 100%;
+
+  padding:
+    11px 12px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  border-radius:
+    10px;
+
+  outline: none;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.17
+    );
+
+  color: white;
+
+  font-size: 12px;
+
+  line-height: 1.45;
+
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+
+.poi-field textarea {
+  min-height: 84px;
+
+  resize: vertical;
+}
+
+
+.poi-field input:focus,
+.poi-field textarea:focus {
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.27
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+}
+
+
+.poi-field input::placeholder,
+.poi-field textarea::placeholder {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+}
+
+
+/* =========================================
+   LOCALIZAR
+   ========================================= */
+
+.poi-locate-button {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  width: 100%;
+
+  min-height: 44px;
+
+  margin-top: 12px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.78
+    );
+
+  font-size: 10px;
+
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+
+.poi-locate-button:hover:not(
+  :disabled
+) {
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.21
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  color: white;
+}
+
+
+.poi-locate-button:disabled {
+  opacity: 0.45;
+
+  cursor: default;
+}
+
+
+.poi-locate-button > span {
+  font-size: 15px;
+}
+
+
+/* =========================================
+   UBICACIÓN ENCONTRADA
+   ========================================= */
+
+.poi-location-box {
+  margin-top: 12px;
+
+  padding: 12px;
+
+  border:
+    1px solid
+    rgba(
+      103,
+      211,
+      143,
+      0.17
+    );
+
+  border-radius:
+    11px;
+
+  background:
+    rgba(
+      72,
+      169,
+      107,
+      0.075
+    );
+}
+
+
+.poi-location-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+
+.poi-location-top strong {
+  color:
+    #a5dfb9;
+
+  font-size: 10px;
+}
+
+
+.poi-location-check {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 18px;
+
+  height: 18px;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      107,
+      211,
+      144,
+      0.13
+    );
+
+  color:
+    #a5dfb9;
+
+  font-size: 9px;
+
+  font-weight: 900;
+}
+
+
+.poi-location-box p {
+  margin:
+    8px 0 0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.57
+    );
+
+  font-size: 10px;
+
+  line-height: 1.45;
+}
+
+
+.poi-coordinates {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: 8px;
+}
+
+
+.poi-coordinates span {
+  padding:
+    4px 7px;
+
+  border-radius:
+    6px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.045
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.35
+    );
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing:
+    0.04em;
+}
+
+
+.poi-location-box small {
+  display: block;
+
+  margin-top: 8px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.3
+    );
+
+  font-size: 8px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   SUBIR IMAGEN
+   ========================================= */
+
+.poi-upload {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-top: 15px;
+
+  cursor: pointer;
+}
+
+
+.poi-upload input {
+  position: absolute;
+
+  width: 1px;
+
+  height: 1px;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.poi-upload-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  min-height: 60px;
+
+  padding:
+    10px 12px;
+
+  border:
+    1px dashed
+    rgba(
+      255,
+      255,
+      255,
+      0.13
+    );
+
+  border-radius:
+    11px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  transition:
+    background 150ms ease,
+    border-color 150ms ease;
+}
+
+
+.poi-upload:hover
+.poi-upload-box {
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.25
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
+}
+
+
+.poi-upload-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 37px;
+
+  height: 37px;
+
+  flex: 0 0 auto;
+
+  border-radius:
+    9px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.55
+    );
+
+  font-size: 16px;
+}
+
+
+.poi-upload-box > div {
+  display: flex;
+
+  min-width: 0;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.poi-upload-box strong {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.7
+    );
+
+  font-size: 10px;
+}
+
+
+.poi-upload-box small {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.27
+    );
+
+  font-size: 8px;
+}
+
+
+/* =========================================
+   PREVISUALIZACIÓN
+   ========================================= */
+
+.poi-preview-wrapper {
+  position: relative;
+
+  margin-top: 11px;
+}
+
+
+.poi-image-preview {
+  display: block;
+
+  width: 100%;
+
+  max-height: 230px;
+
+  border-radius:
+    11px;
+
+  object-fit: cover;
+}
+
+
+.poi-preview-wrapper > span {
+  position: absolute;
+
+  left: 8px;
+
+  bottom: 8px;
+
+  padding:
+    5px 7px;
+
+  border-radius:
+    6px;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.7
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.65
+    );
+
+  font-size: 7px;
+
+  font-weight: 750;
+
+  letter-spacing:
+    0.08em;
+
+  backdrop-filter:
+    blur(8px);
+}
+
+
+/* =========================================
+   ERRORES Y ÉXITO
+   ========================================= */
+
+.poi-error,
+.poi-success {
+  display: flex;
+
+  align-items:
+    flex-start;
+
+  gap: 8px;
+
+  margin-top: 12px;
+
+  padding:
+    10px 11px;
+
+  border-radius:
+    9px;
+
+  font-size: 9px;
+
+  line-height: 1.45;
+}
+
+
+.poi-error {
+  border:
+    1px solid
+    rgba(
+      228,
+      98,
+      98,
+      0.2
+    );
+
+  background:
+    rgba(
+      177,
+      52,
+      52,
+      0.09
+    );
+
+  color:
+    #ffb6b6;
+}
+
+
+.poi-error > span {
+  font-weight: 900;
+}
+
+
+.poi-success {
+  margin-bottom: 12px;
+
+  border:
+    1px solid
+    rgba(
+      103,
+      211,
+      143,
+      0.18
+    );
+
+  background:
+    rgba(
+      72,
+      169,
+      107,
+      0.08
+    );
+
+  color:
+    #a7dfba;
+}
+
+
+/* =========================================
+   BOTONES FORMULARIO
+   ========================================= */
+
+.poi-form-actions {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1.2fr;
+
+  gap: 8px;
+
+  margin-top: 18px;
+}
+
+
+.poi-cancel-button,
+.poi-save-button {
+  min-height: 44px;
+
+  padding:
+    0 12px;
+
+  border-radius:
+    10px;
+
+  font-size: 10px;
+
+  font-weight: 780;
+
+  cursor: pointer;
+
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease,
+    background 150ms ease;
+}
+
+
+.poi-cancel-button {
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  background:
+    transparent;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.5
+    );
+}
+
+
+.poi-cancel-button:hover:not(
+  :disabled
+) {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.75
+    );
+}
+
+
+.poi-save-button {
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+
+  background: white;
+
+  color:
+    #080c11;
+}
+
+
+.poi-save-button:hover:not(
+  :disabled
+) {
+  transform:
+    translateY(-1px);
+}
+
+
+.poi-save-button:disabled,
+.poi-cancel-button:disabled {
+  opacity: 0.35;
+
+  cursor: default;
+}
+
+
+/* =========================================
+   CARGANDO
+   ========================================= */
+
+.poi-loading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 15px;
+
+  padding:
+    10px 0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.35
+    );
+
+  font-size: 9px;
+}
+
+
+.poi-loading-dot {
+  width: 6px;
+
+  height: 6px;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.55
+    );
+
+  animation:
+    poiPulse
+    1.1s ease-in-out
+    infinite;
+}
+
+
+@keyframes poiPulse {
+  0%,
+  100% {
+    opacity: 0.25;
+
+    transform:
+      scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+}
+
+
+/* =========================================
+   LISTA
+   ========================================= */
+
+.poi-list-wrapper {
+  margin-top: 20px;
+}
+
+
+.poi-list-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 10px;
+
+  margin-bottom: 9px;
+
+  padding:
+    0 2px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.28
+    );
+
+  font-size: 8px;
+
+  font-weight: 850;
+
+  letter-spacing:
+    0.14em;
+}
+
+
+.poi-list-header
+> span:last-child {
+  letter-spacing: 0;
+}
+
+
+.poi-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+/* =========================================
+   TARJETA POI
+   ========================================= */
+
+.poi-card {
+  display: grid;
+
+  grid-template-columns:
+    27px
+    64px
+    minmax(0, 1fr)
+    18px;
+
+  align-items: center;
+
+  gap: 10px;
+
+  width: 100%;
+
+  padding: 7px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+
+  border-radius:
+    12px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  color: white;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
+}
+
+
+.poi-card:hover {
+  transform:
+    translateX(2px);
+
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.15
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+}
+
+
+.poi-card-number {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+.poi-card-image,
+.poi-card-placeholder {
+  width: 64px;
+
+  height: 54px;
+
+  border-radius:
+    8px;
+}
+
+
+.poi-card-image {
+  display: block;
+
+  object-fit: cover;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+}
+
+
+.poi-card-placeholder {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(
+        255,
+        255,
+        255,
+        0.08
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        0.025
+      )
+    );
+
+  font-size: 18px;
+}
+
+
+.poi-card-content {
+  display: flex;
+
+  min-width: 0;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.poi-card-content strong {
+  overflow: hidden;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.83
+    );
+
+  font-size: 10px;
+
+  font-weight: 730;
+
+  line-height: 1.3;
+
+  text-overflow:
+    ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.poi-card-content span {
+  overflow: hidden;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.32
+    );
+
+  font-size: 8px;
+
+  line-height: 1.4;
+
+  display:
+    -webkit-box;
+
+  -webkit-line-clamp:
+    2;
+
+  -webkit-box-orient:
+    vertical;
+}
+
+
+.poi-card-arrow {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.23
+    );
+
+  font-size: 12px;
+
+  transition:
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+
+.poi-card:hover
+.poi-card-arrow {
+  transform:
+    translateX(2px);
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.65
+    );
+}
+
+
+/* =========================================
+   ESTADO VACÍO
+   ========================================= */
+
+.poi-empty {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  margin-top: 16px;
+
+  padding:
+    26px 20px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+
+  border-radius:
+    13px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.018
+    );
+
+  text-align: center;
+}
+
+
+.poi-empty-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 39px;
+
+  height: 39px;
+
+  margin-bottom: 10px;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.045
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.42
+    );
+
+  font-size: 17px;
+}
+
+
+.poi-empty strong {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.58
+    );
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+
+.poi-empty span {
+  max-width: 250px;
+
+  margin-top: 6px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.26
+    );
+
+  font-size: 8px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   MÓVIL
+   ========================================= */
+
+@media (
+  max-width: 600px
+) {
+  .poi-card {
+    grid-template-columns:
+      23px
+      56px
+      minmax(0, 1fr)
+      15px;
+
+    gap: 8px;
+  }
+
+
+  .poi-card-image,
+  .poi-card-placeholder {
+    width: 56px;
+
+    height: 50px;
+  }
+
+
+  .poi-form-actions {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .poi-save-button {
+    grid-row: 1;
+  }
+
+
+  .poi-cancel-button {
+    grid-row: 2;
+  }
+}
+
+/* =========================================
+   FICHA DEL PUNTO DE INTERÉS
+   ========================================= */
+
+.poi-detail-overlay {
+  position: fixed;
+
+  z-index: 9000;
+
+  right: 24px;
+
+  bottom: 78px;
+
+  width: min(
+    390px,
+    calc(100vw - 48px)
+  );
+
+  pointer-events: none;
+}
+
+
+.poi-detail-card {
+  position: relative;
+
+  overflow: hidden;
+
+  width: 100%;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+
+  border-radius: 20px;
+
+  background:
+    rgba(
+      7,
+      11,
+      16,
+      0.94
+    );
+
+  box-shadow:
+    0 24px 70px
+    rgba(
+      0,
+      0,
+      0,
+      0.48
+    );
+
+  color: white;
+
+  backdrop-filter:
+    blur(22px);
+
+  pointer-events: auto;
+}
+
+
+/* CERRAR */
+
+.poi-detail-close {
+  position: absolute;
+
+  z-index: 4;
+
+  top: 12px;
+
+  right: 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 34px;
+
+  height: 34px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.13
+    );
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.55
+    );
+
+  color: white;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  backdrop-filter:
+    blur(10px);
+}
+
+
+/* IMAGEN */
+
+.poi-detail-image-wrapper {
+  position: relative;
+
+  height: 220px;
+
+  overflow: hidden;
+}
+
+
+.poi-detail-image {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.poi-detail-image-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 48%,
+      rgba(
+        7,
+        11,
+        16,
+        0.95
+      )
+      100%
+    );
+}
+
+
+.poi-detail-no-image {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  height: 145px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        255,
+        255,
+        255,
+        0.09
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        0.025
+      )
+    );
+}
+
+
+.poi-detail-no-image span {
+  font-size: 34px;
+}
+
+
+/* CONTENIDO */
+
+.poi-detail-content {
+  padding:
+    20px 21px 21px;
+}
+
+
+.poi-detail-kicker {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.3
+    );
+
+  font-size: 8px;
+
+  font-weight: 850;
+
+  letter-spacing:
+    0.17em;
+}
+
+
+.poi-detail-content h3 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 25px;
+
+  font-weight: 720;
+
+  line-height: 1.08;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+/* DIRECCIÓN */
+
+.poi-detail-location {
+  display: flex;
+
+  align-items:
+    flex-start;
+
+  gap: 8px;
+
+  margin-top: 13px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.47
+    );
+}
+
+
+.poi-detail-location > span {
+  margin-top: 1px;
+
+  font-size: 13px;
+}
+
+
+.poi-detail-location p {
+  margin: 0;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+
+/* INFORMACIÓN */
+
+.poi-detail-meta {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 8px;
+
+  margin-top: 18px;
+}
+
+
+.poi-detail-meta > div {
+  display: flex;
+
+  min-width: 0;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding: 10px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+
+  border-radius: 10px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+}
+
+
+.poi-detail-meta span {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.25
+    );
+
+  font-size: 7px;
+
+  font-weight: 850;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+.poi-detail-meta strong {
+  overflow: hidden;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.68
+    );
+
+  font-size: 9px;
+
+  font-weight: 650;
+
+  text-overflow:
+    ellipsis;
+
+  white-space: nowrap;
+}
+
+
+/* COORDENADAS */
+
+.poi-detail-coordinates {
+  display: flex;
+
+  gap: 6px;
+
+  margin-top: 9px;
+}
+
+
+.poi-detail-coordinates span {
+  padding:
+    5px 7px;
+
+  border-radius: 6px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.27
+    );
+
+  font-size: 7px;
+
+  font-weight: 750;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+/* ACCIONES */
+
+.poi-detail-actions {
+  display: grid;
+
+  grid-template-columns:
+    1fr auto;
+
+  gap: 8px;
+
+  margin-top: 19px;
+}
+
+
+.poi-detail-map-button,
+.poi-detail-delete-button {
+  min-height: 43px;
+
+  padding:
+    0 14px;
+
+  border-radius: 10px;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+.poi-detail-map-button {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  border: 0;
+
+  background: white;
+
+  color: #090d12;
+}
+
+
+.poi-detail-delete-button {
+  border:
+    1px solid
+    rgba(
+      232,
+      100,
+      100,
+      0.2
+    );
+
+  background:
+    rgba(
+      183,
+      54,
+      54,
+      0.08
+    );
+
+  color:
+    rgba(
+      255,
+      154,
+      154,
+      0.78
+    );
+}
+
+
+.poi-detail-delete-button:hover:not(
+  :disabled
+) {
+  background:
+    rgba(
+      183,
+      54,
+      54,
+      0.17
+    );
+
+  color: #ffb1b1;
+}
+
+
+.poi-detail-delete-button:disabled {
+  opacity: 0.4;
+
+  cursor: default;
+}
+
+
+/* MÓVIL */
+
+@media (
+  max-width: 600px
+) {
+  .poi-detail-overlay {
+    right: 10px;
+
+    bottom: 70px;
+
+    width:
+      calc(
+        100vw - 20px
+      );
+  }
+
+
+  .poi-detail-image-wrapper {
+    height: 190px;
+  }
+}
+
+/* =========================================
+   EDICIÓN DE PUNTOS DE INTERÉS
+   ========================================= */
+
+.poi-detail-actions-three {
+  grid-template-columns:
+    1fr auto auto;
+}
+
+
+.poi-detail-edit-button {
+  min-height: 43px;
+
+  padding:
+    0 14px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.78
+    );
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+
+.poi-detail-edit-button:hover {
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  color: white;
+}
+
+
+@media (
+  max-width: 600px
+) {
+  .poi-detail-actions-three {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+
+  .poi-detail-map-button {
+    grid-column:
+      1 / -1;
+  }
+}
