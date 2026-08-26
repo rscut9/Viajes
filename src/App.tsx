@@ -2563,6 +2563,29 @@ function App() {
   }
 
   /* =======================================================
+     VOLVER UN NIVEL
+     ======================================================= */
+
+  function goBackOneLevel() {
+    if (selectedMunicipality) {
+      showMunicipalities();
+      return;
+    }
+
+    if (selectedProvince) {
+      showProvinces();
+      return;
+    }
+
+    if (selectedCommunity) {
+      showCommunities();
+      return;
+    }
+
+    returnToWorld();
+  }
+
+  /* =======================================================
      MAPA
      ======================================================= */
 
@@ -3157,6 +3180,73 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+  function handleOpenPoi(event: Event) {
+      const customEvent =
+        event as CustomEvent<{
+          id: string;
+          name: string;
+          address: string;
+          longitude: number;
+          latitude: number;
+          countryCode: string;
+        }>;
+
+      const point =
+        customEvent.detail;
+
+      if (!point) {
+        return;
+      }
+
+      const map =
+        mapRef.current;
+
+      if (!map) {
+        return;
+      }
+
+      /*
+      * El mapa estaba oculto mientras
+      * veíamos "Mis puntos".
+      *
+      * Le indicamos que recalcule
+      * su tamaño antes de movernos.
+      */
+      map.resize();
+
+      /*
+      * Volamos hasta el punto.
+      */
+      map.flyTo({
+        center: [
+          point.longitude,
+          point.latitude,
+        ],
+
+        zoom: 17,
+
+        pitch: 45,
+
+        bearing: 0,
+
+        duration: 1600,
+      });
+    }
+
+    window.addEventListener(
+      "travel-open-poi",
+      handleOpenPoi
+    );
+
+    return () => {
+      window.removeEventListener(
+        "travel-open-poi",
+        handleOpenPoi
+      );
+    };
+  }, []);
+
   /* =======================================================
      CLICK DESDE EL MAPA
      ======================================================= */
@@ -3403,27 +3493,39 @@ function App() {
       ) : (
         <aside className="explorer-page">
           {/* =============================
-              CABECERA
+              NAVEGACIÓN STICKY
               ============================= */}
 
-          <header className="explorer-header">
-            <div className="header-actions">
+          <nav className="explorer-sticky-nav">
+            <div className="explorer-sticky-actions">
               <button
                 type="button"
-                className="pill-button"
+                className="explorer-nav-button"
+                onClick={
+                  goBackOneLevel
+                }
+              >
+                <span>←</span>
+                <span>Atrás</span>
+              </button>
+
+              <button
+                type="button"
+                className="explorer-nav-button world"
                 onClick={
                   returnToWorld
                 }
               >
-                ← Mundo
+                <span>🌍</span>
+                <span>Mapamundi</span>
               </button>
 
               <button
                 type="button"
                 className={
                   terrainEnabled
-                    ? "pill-button active"
-                    : "pill-button"
+                    ? "explorer-nav-button terrain active"
+                    : "explorer-nav-button terrain"
                 }
                 onClick={
                   toggleTerrain
@@ -3435,6 +3537,78 @@ function App() {
               </button>
             </div>
 
+            <div className="explorer-path">
+              <button
+                type="button"
+                onClick={
+                  showCommunities
+                }
+                title={
+                  `Volver a ${selectedCountry}`
+                }
+              >
+                {selectedCountry}
+              </button>
+
+              {selectedCommunity && (
+                <>
+                  <span className="explorer-path-separator">
+                    ›
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={
+                      showProvinces
+                    }
+                    title={
+                      `Volver a ${selectedCommunity.name}`
+                    }
+                  >
+                    {selectedCommunity.name}
+                  </button>
+                </>
+              )}
+
+              {selectedProvince && (
+                <>
+                  <span className="explorer-path-separator">
+                    ›
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={
+                      showMunicipalities
+                    }
+                    title={
+                      `Volver a ${selectedProvince.name}`
+                    }
+                  >
+                    {selectedProvince.name}
+                  </button>
+                </>
+              )}
+
+              {selectedMunicipality && (
+                <>
+                  <span className="explorer-path-separator">
+                    ›
+                  </span>
+
+                  <span className="explorer-path-current">
+                    {selectedMunicipality.name}
+                  </span>
+                </>
+              )}
+            </div>
+          </nav>
+
+          {/* =============================
+              CABECERA
+              ============================= */}
+
+          <header className="explorer-header">
             <div className="eyebrow">
               EXPLORANDO
             </div>
@@ -3453,156 +3627,129 @@ function App() {
           </header>
 
           {/* =============================
-              BREADCRUMBS
-              ============================= */}
-
-          <nav className="breadcrumbs">
-            <button
-              type="button"
-              onClick={
-                showCommunities
-              }
-            >
-              {selectedCountry}
-            </button>
-
-            {selectedCommunity && (
-              <>
-                <span>›</span>
-
-                <button
-                  type="button"
-                  onClick={
-                    showProvinces
-                  }
-                >
-                  {
-                    selectedCommunity.name
-                  }
-                </button>
-              </>
-            )}
-
-            {selectedProvince && (
-              <>
-                <span>›</span>
-
-                <button
-                  type="button"
-                  onClick={
-                    showMunicipalities
-                  }
-                >
-                  {
-                    selectedProvince.name
-                  }
-                </button>
-              </>
-            )}
-
-            {selectedMunicipality && (
-              <>
-                <span>›</span>
-
-                <strong>
-                  {
-                    selectedMunicipality.name
-                  }
-                </strong>
-              </>
-            )}
-          </nav>
-
-          {/* =============================
-              COMUNIDADES
+              NIVELES ADMINISTRATIVOS
               ============================= */}
 
           <section className="hierarchy-section">
-            <div className="section-heading">
-              <div>
-                <span className="section-kicker">
-                  NIVEL 1
-                </span>
-
-                <h2>
-                  {selectedCountryCode
-                    ? getLevelName(
-                        selectedCountryCode,
-                        1
-                      )
-                    : "Regiones"}
-                </h2>
-              </div>
-
-              {communities.length >
-                0 && (
-                <span className="count-badge">
-                  {
-                    communities.length
-                  }
-                </span>
-              )}
-            </div>
-
-            {loadingLevel === 1 ? (
-              <div className="loading-row">
-                <span className="small-loader" />
-
-                Cargando regiones…
-              </div>
-            ) : communities.length >
-              0 ? (
-              <>
-                <div className="search-wrapper">
-                  <span>
-                    ⌕
+            {selectedCommunity ? (
+              <div className="collapsed-level">
+                <div className="collapsed-level-copy">
+                  <span className="section-kicker">
+                    NIVEL 1 · SELECCIONADO
                   </span>
 
-                  <input
-                    type="search"
-                    value={
-                      communitySearch
-                    }
-                    onChange={(
-                      event
-                    ) =>
-                      setCommunitySearch(
-                        event.target
-                          .value
-                      )
-                    }
-                    placeholder="Buscar..."
-                  />
+                  <strong>
+                    {selectedCommunity.name}
+                  </strong>
+
+                  <span className="collapsed-level-type">
+                    {selectedCountryCode
+                      ? getLevelName(
+                          selectedCountryCode,
+                          1
+                        )
+                      : "Región"}
+                  </span>
                 </div>
 
-                <AdminList
-                  items={
-                    visibleCommunities
+                <button
+                  type="button"
+                  className="collapsed-level-change"
+                  onClick={
+                    showCommunities
                   }
-                  selectedKey={
-                    selectedCommunity
-                      ?.key ?? null
-                  }
-                  hoveredKey={
-                    hoveredAdminKey
-                  }
-                  onHover={
-                    previewAdmin
-                  }
-                  onSelect={
-                    selectCommunity
-                  }
-                />
-              </>
-            ) : levelError ? (
-              <div className="info-box error">
-                {levelError}
+                >
+                  Cambiar
+                </button>
               </div>
-            ) : null}
+            ) : (
+              <>
+                <div className="section-heading">
+                  <div>
+                    <span className="section-kicker">
+                      NIVEL 1
+                    </span>
+
+                    <h2>
+                      {selectedCountryCode
+                        ? getLevelName(
+                            selectedCountryCode,
+                            1
+                          )
+                        : "Regiones"}
+                    </h2>
+                  </div>
+
+                  {communities.length >
+                    0 && (
+                    <span className="count-badge">
+                      {
+                        communities.length
+                      }
+                    </span>
+                  )}
+                </div>
+
+                {loadingLevel === 1 ? (
+                  <div className="loading-row">
+                    <span className="small-loader" />
+
+                    Cargando regiones…
+                  </div>
+                ) : communities.length >
+                  0 ? (
+                  <>
+                    <div className="search-wrapper">
+                      <span>
+                        ⌕
+                      </span>
+
+                      <input
+                        type="search"
+                        value={
+                          communitySearch
+                        }
+                        onChange={(
+                          event
+                        ) =>
+                          setCommunitySearch(
+                            event.target
+                              .value
+                          )
+                        }
+                        placeholder="Buscar..."
+                      />
+                    </div>
+
+                    <AdminList
+                      items={
+                        visibleCommunities
+                      }
+                      selectedKey={
+                        null
+                      }
+                      hoveredKey={
+                        hoveredAdminKey
+                      }
+                      onHover={
+                        previewAdmin
+                      }
+                      onSelect={
+                        selectCommunity
+                      }
+                    />
+                  </>
+                ) : levelError ? (
+                  <div className="info-box error">
+                    {levelError}
+                  </div>
+                ) : null}
+              </>
+            )}
           </section>
 
           {/* =============================
-              PROVINCIAS
+              NIVEL 2
               ============================= */}
 
           {selectedCommunity && (
@@ -3612,107 +3759,140 @@ function App() {
               }
               className="hierarchy-section highlighted-section"
             >
-              <div className="parent-context">
-                <span>
-                  DENTRO DE
-                </span>
-
-                <strong>
-                  {
-                    selectedCommunity.name
-                  }
-                </strong>
-              </div>
-
-              <div className="section-heading">
-                <div>
-                  <span className="section-kicker">
-                    NIVEL 2
-                  </span>
-
-                  <h2>
-                    {selectedCountryCode
-                      ? getLevelName(
-                          selectedCountryCode,
-                          2
-                        )
-                      : "Segundo nivel"}
-                  </h2>
-                </div>
-
-                {provinces.length >
-                  0 && (
-                  <span className="count-badge">
-                    {
-                      provinces.length
-                    }
-                  </span>
-                )}
-              </div>
-
-              {loadingLevel === 2 ? (
-                <div className="loading-row">
-                  <span className="small-loader" />
-
-                  Cargando provincias…
-                </div>
-              ) : provinces.length >
-                0 ? (
-                <>
-                  <div className="search-wrapper">
-                    <span>
-                      ⌕
+              {selectedProvince ? (
+                <div className="collapsed-level">
+                  <div className="collapsed-level-copy">
+                    <span className="section-kicker">
+                      NIVEL 2 · SELECCIONADO
                     </span>
 
-                    <input
-                      type="search"
-                      value={
-                        provinceSearch
-                      }
-                      onChange={(
-                        event
-                      ) =>
-                        setProvinceSearch(
-                          event.target
-                            .value
-                        )
-                      }
-                      placeholder="Buscar..."
-                    />
+                    <strong>
+                      {selectedProvince.name}
+                    </strong>
+
+                    <span className="collapsed-level-type">
+                      {selectedCountryCode
+                        ? getLevelName(
+                            selectedCountryCode,
+                            2
+                          )
+                        : "Segundo nivel"}
+                    </span>
                   </div>
 
-                  <AdminList
-                    items={
-                      visibleProvinces
+                  <button
+                    type="button"
+                    className="collapsed-level-change"
+                    onClick={
+                      showProvinces
                     }
-                    selectedKey={
-                      selectedProvince
-                        ?.key ??
-                      null
-                    }
-                    hoveredKey={
-                      hoveredAdminKey
-                    }
-                    onHover={
-                      previewAdmin
-                    }
-                    onSelect={
-                      selectProvince
-                    }
-                  />
-                </>
-              ) : loadingLevel !==
-                2 ? (
-                <div className="info-box">
-                  {levelError ||
-                    "No se han encontrado divisiones de segundo nivel."}
+                  >
+                    Cambiar
+                  </button>
                 </div>
-              ) : null}
+              ) : (
+                <>
+                  <div className="parent-context">
+                    <span>
+                      DENTRO DE
+                    </span>
+
+                    <strong>
+                      {
+                        selectedCommunity.name
+                      }
+                    </strong>
+                  </div>
+
+                  <div className="section-heading">
+                    <div>
+                      <span className="section-kicker">
+                        NIVEL 2
+                      </span>
+
+                      <h2>
+                        {selectedCountryCode
+                          ? getLevelName(
+                              selectedCountryCode,
+                              2
+                            )
+                          : "Segundo nivel"}
+                      </h2>
+                    </div>
+
+                    {provinces.length >
+                      0 && (
+                      <span className="count-badge">
+                        {
+                          provinces.length
+                        }
+                      </span>
+                    )}
+                  </div>
+
+                  {loadingLevel === 2 ? (
+                    <div className="loading-row">
+                      <span className="small-loader" />
+
+                      Cargando provincias…
+                    </div>
+                  ) : provinces.length >
+                    0 ? (
+                    <>
+                      <div className="search-wrapper">
+                        <span>
+                          ⌕
+                        </span>
+
+                        <input
+                          type="search"
+                          value={
+                            provinceSearch
+                          }
+                          onChange={(
+                            event
+                          ) =>
+                            setProvinceSearch(
+                              event.target
+                                .value
+                            )
+                          }
+                          placeholder="Buscar..."
+                        />
+                      </div>
+
+                      <AdminList
+                        items={
+                          visibleProvinces
+                        }
+                        selectedKey={
+                          null
+                        }
+                        hoveredKey={
+                          hoveredAdminKey
+                        }
+                        onHover={
+                          previewAdmin
+                        }
+                        onSelect={
+                          selectProvince
+                        }
+                      />
+                    </>
+                  ) : loadingLevel !==
+                    2 ? (
+                    <div className="info-box">
+                      {levelError ||
+                        "No se han encontrado divisiones de segundo nivel."}
+                    </div>
+                  ) : null}
+                </>
+              )}
             </section>
           )}
 
           {/* =============================
-              MUNICIPIOS
+              NIVEL 3
               ============================= */}
 
           {selectedProvince && (
@@ -3722,104 +3902,137 @@ function App() {
               }
               className="hierarchy-section highlighted-section"
             >
-              <div className="parent-context">
-                <span>
-                  DENTRO DE
-                </span>
-
-                <strong>
-                  {
-                    selectedProvince.name
-                  }
-                </strong>
-              </div>
-
-              <div className="section-heading">
-                <div>
-                  <span className="section-kicker">
-                    NIVEL 3
-                  </span>
-
-                  <h2>
-                    {selectedCountryCode
-                      ? getLevelName(
-                          selectedCountryCode,
-                          3
-                        )
-                      : "Municipios"}
-                  </h2>
-                </div>
-
-                {municipalities.length >
-                  0 && (
-                  <span className="count-badge">
-                    {
-                      municipalities.length
-                    }
-                  </span>
-                )}
-              </div>
-
-              {loadingLevel === 3 ? (
-                <div className="loading-row">
-                  <span className="small-loader" />
-
-                  Cargando municipios.
-                  La primera vez puede
-                  tardar unos segundos…
-                </div>
-              ) : municipalities.length >
-                0 ? (
-                <>
-                  <div className="search-wrapper">
-                    <span>
-                      ⌕
+              {selectedMunicipality ? (
+                <div className="collapsed-level">
+                  <div className="collapsed-level-copy">
+                    <span className="section-kicker">
+                      NIVEL 3 · SELECCIONADO
                     </span>
 
-                    <input
-                      type="search"
-                      value={
-                        municipalitySearch
-                      }
-                      onChange={(
-                        event
-                      ) =>
-                        setMunicipalitySearch(
-                          event.target
-                            .value
-                        )
-                      }
-                      placeholder="Buscar municipio..."
-                    />
+                    <strong>
+                      {selectedMunicipality.name}
+                    </strong>
+
+                    <span className="collapsed-level-type">
+                      {selectedCountryCode
+                        ? getLevelName(
+                            selectedCountryCode,
+                            3
+                          )
+                        : "Municipio"}
+                    </span>
                   </div>
 
-                  <AdminList
-                    items={
-                      visibleMunicipalities
+                  <button
+                    type="button"
+                    className="collapsed-level-change"
+                    onClick={
+                      showMunicipalities
                     }
-                    selectedKey={
-                      selectedMunicipality
-                        ?.key ??
-                      null
-                    }
-                    hoveredKey={
-                      hoveredAdminKey
-                    }
-                    onHover={
-                      previewAdmin
-                    }
-                    onSelect={
-                      selectMunicipality
-                    }
-                  />
-                </>
-              ) : loadingLevel !==
-                3 ? (
-                <div className="info-box">
-                  {levelError ||
-                    "Este territorio no dispone de un tercer nivel administrativo."}
+                  >
+                    Cambiar
+                  </button>
                 </div>
-              ) : null}
+              ) : (
+                <>
+                  <div className="parent-context">
+                    <span>
+                      DENTRO DE
+                    </span>
+
+                    <strong>
+                      {
+                        selectedProvince.name
+                      }
+                    </strong>
+                  </div>
+
+                  <div className="section-heading">
+                    <div>
+                      <span className="section-kicker">
+                        NIVEL 3
+                      </span>
+
+                      <h2>
+                        {selectedCountryCode
+                          ? getLevelName(
+                              selectedCountryCode,
+                              3
+                            )
+                          : "Municipios"}
+                      </h2>
+                    </div>
+
+                    {municipalities.length >
+                      0 && (
+                      <span className="count-badge">
+                        {
+                          municipalities.length
+                        }
+                      </span>
+                    )}
+                  </div>
+
+                  {loadingLevel === 3 ? (
+                    <div className="loading-row">
+                      <span className="small-loader" />
+
+                      Cargando municipios.
+                      La primera vez puede
+                      tardar unos segundos…
+                    </div>
+                  ) : municipalities.length >
+                    0 ? (
+                    <>
+                      <div className="search-wrapper">
+                        <span>
+                          ⌕
+                        </span>
+
+                        <input
+                          type="search"
+                          value={
+                            municipalitySearch
+                          }
+                          onChange={(
+                            event
+                          ) =>
+                            setMunicipalitySearch(
+                              event.target
+                                .value
+                            )
+                          }
+                          placeholder="Buscar municipio..."
+                        />
+                      </div>
+
+                      <AdminList
+                        items={
+                          visibleMunicipalities
+                        }
+                        selectedKey={
+                          null
+                        }
+                        hoveredKey={
+                          hoveredAdminKey
+                        }
+                        onHover={
+                          previewAdmin
+                        }
+                        onSelect={
+                          selectMunicipality
+                        }
+                      />
+                    </>
+                  ) : loadingLevel !==
+                    3 ? (
+                    <div className="info-box">
+                      {levelError ||
+                        "Este territorio no dispone de un tercer nivel administrativo."}
+                    </div>
+                  ) : null}
+                </>
+              )}
             </section>
           )}
 
